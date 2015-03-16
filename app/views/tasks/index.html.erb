@@ -1,0 +1,21 @@
+<h1>Tasks</h1>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Notes</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @tasks.each do |task| %>
+      <tr class="<%= 'active' if task.done %>">
+        <td><%= task.title %><%= ' (done)' if task.done %></td>
+        <td><%= task.notes %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Delete', task_path(task),
+                        method: :delete,
+                        data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+
+</table>
